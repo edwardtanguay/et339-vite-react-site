@@ -1,4 +1,5 @@
 import employees from "./data/employees.json";
+import dayjs from 'dayjs';
 
 function App() {
 	const title = "Employee Directory";
@@ -17,15 +18,20 @@ function App() {
 						className="bg-slate-700 mt-3 p-3"
 					>
 						<div className="flex gap-3">
-							<img className="w-36 rounded" src={`images/employees/employee_${employee.employeeID}.jpg`}/>
-						<div>
-							<h2 className="font-bold text-slate-300">
-								{employee.firstName} {employee.lastName}
-							</h2>
-							<p className="italic text-yellow-200">
-								{employee.title}
-							</p>
-						</div>
+							<img
+								className="w-36 rounded"
+								src={`images/employees/employee_${employee.employeeID}.jpg`}
+							/>
+							<div>
+								<h2 className="font-bold text-slate-300">
+									{employee.firstName} {employee.lastName}
+								</h2>
+								<p className="italic text-yellow-200">
+									{employee.title}
+								</p>
+								<p className="text-red-400">{employee.address.phone}</p>
+								<p className="text-red-400">{dayjs(employee.birthDate).format('MMM DD, YYYY')}</p>
+							</div>
 						</div>
 						<p className="text-slate-200">{employee.notes}</p>
 					</div>
