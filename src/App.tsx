@@ -12,11 +12,21 @@ function App() {
 			<p>{introText}</p>
 			<div>
 				{employees.map((employee) => (
-					<div key={employee.employeeID} className="bg-slate-700 mt-3 p-3">
-						<h2 className="font-bold">
-							{employee.firstName} {employee.lastName}
-						</h2>
-						<p className="italic text-yellow-200">{employee.title}</p>
+					<div
+						key={employee.employeeID}
+						className="bg-slate-700 mt-3 p-3"
+					>
+						<div className="flex gap-3">
+							<img className="w-36 rounded" src={`images/employees/employee_${employee.employeeID}.jpg`}/>
+						<div>
+							<h2 className="font-bold text-slate-300">
+								{employee.firstName} {employee.lastName}
+							</h2>
+							<p className="italic text-yellow-200">
+								{employee.title}
+							</p>
+						</div>
+						</div>
 						<p className="text-slate-200">{employee.notes}</p>
 					</div>
 				))}
