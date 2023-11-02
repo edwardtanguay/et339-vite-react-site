@@ -1,5 +1,6 @@
 import employees from "./data/employees.json";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
+import * as config from "./config";
 
 function App() {
 	const title = "Employee Directory";
@@ -29,8 +30,18 @@ function App() {
 								<p className="italic text-yellow-200">
 									{employee.title}
 								</p>
-								<p className="text-red-400">{employee.address.phone}</p>
-								<p className="text-red-400">{dayjs(employee.birthDate).format('MMM DD, YYYY')}</p>
+								{config.accessGroup === 'administrators' && (
+									<>
+										<p className="text-red-400">
+											{employee.address.phone}
+										</p>
+										<p className="text-red-400">
+											{dayjs(employee.birthDate).format(
+												"MMM DD, YYYY"
+											)}
+										</p>
+									</>
+								)}
 							</div>
 						</div>
 						<p className="text-slate-200">{employee.notes}</p>
